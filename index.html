@@ -43,34 +43,36 @@ nav.scrolled{box-shadow:0 4px 30px rgba(35,27,24,.35)}
 /* HERO */
 #hero{
   min-height:100vh;background:var(--bg);
-  display:flex;flex-direction:column;align-items:center;
-  justify-content:center;text-align:center;
-  padding:9rem 2rem 5rem;overflow:hidden;position:relative;
+  display:flex;align-items:center;
+  padding:7rem 3rem 5rem;overflow:hidden;position:relative;
+}
+.hero-inner-split{
+  max-width:1100px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:420px 1fr;gap:5rem;align-items:center;
 }
 .hero-eyebrow{
   font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--soft);margin-bottom:1.4rem;
+  color:var(--soft);margin-bottom:1.2rem;
   opacity:0;animation:fadeUp .9s .1s cubic-bezier(.16,1,.3,1) forwards;
 }
 .hero-name{
   font-family:'Playfair Display',serif;
-  font-size:clamp(3.5rem,8vw,6.5rem);font-weight:800;
+  font-size:clamp(3rem,6vw,5.5rem);font-weight:800;
   letter-spacing:-.04em;line-height:1.04;color:#231B18;
   margin-bottom:1.2rem;
   opacity:0;animation:fadeUp .9s .25s cubic-bezier(.16,1,.3,1) forwards;
 }
 .hero-tagline{
-  font-size:clamp(1rem,2vw,1.25rem);font-weight:300;color:var(--muted);
-  max-width:600px;line-height:1.7;margin:0 auto 1rem;
+  font-size:clamp(.95rem,1.8vw,1.15rem);font-weight:300;color:var(--muted);
+  line-height:1.7;margin-bottom:.7rem;
   opacity:0;animation:fadeUp .9s .4s cubic-bezier(.16,1,.3,1) forwards;
 }
 .hero-sub{
-  font-size:.88rem;color:var(--soft);font-weight:500;margin-bottom:2.8rem;
+  font-size:.85rem;color:var(--soft);font-weight:500;margin-bottom:2.5rem;
   opacity:0;animation:fadeUp .9s .52s cubic-bezier(.16,1,.3,1) forwards;
 }
 .hero-btns{
-  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
-  margin-bottom:5rem;
+  display:flex;gap:1rem;flex-wrap:wrap;
   opacity:0;animation:fadeUp .9s .64s cubic-bezier(.16,1,.3,1) forwards;
 }
 .btn-dark{
@@ -86,24 +88,16 @@ nav.scrolled{box-shadow:0 4px 30px rgba(35,27,24,.35)}
 }
 .btn-light:hover{background:rgba(35,27,24,.12)}
 
-/* HERO PHOTO ROW */
-.hero-photos{
-  display:flex;gap:1.5rem;justify-content:center;align-items:flex-end;
-  width:100%;max-width:900px;
-  opacity:0;animation:fadeUp 1s .78s cubic-bezier(.16,1,.3,1) forwards;
+/* HERO PHOTO */
+.hero-photo-wrap{
+  position:relative;
+  opacity:0;animation:fadeUp 1s .3s cubic-bezier(.16,1,.3,1) forwards;
 }
 .hp-main{
-  width:280px;height:360px;border-radius:20px;overflow:hidden;
-  box-shadow:var(--shadow-lg);border:3px solid #fff;flex-shrink:0;
+  width:100%;height:520px;border-radius:24px;overflow:hidden;
+  box-shadow:var(--shadow-lg);border:4px solid #fff;
 }
 .hp-main img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;filter:brightness(1.02) contrast(1.03)}
-.hp-side{
-  width:200px;height:260px;border-radius:16px;overflow:hidden;
-  box-shadow:var(--shadow);border:3px solid #fff;flex-shrink:0;
-}
-.hp-side img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-.hp-side:first-of-type{transform:translateY(30px)}
-.hp-side:last-of-type{transform:translateY(20px)}
 
 /* SECTION SHARED */
 .s-inner{max-width:1080px;margin:0 auto;padding:7rem 2.5rem}
@@ -118,14 +112,14 @@ nav.scrolled{box-shadow:0 4px 30px rgba(35,27,24,.35)}
 
 /* ABOUT */
 #about{background:var(--bg2)}
-.about-grid{display:grid;grid-template-columns:1fr;gap:3rem;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
 .about-photos{position:relative;height:520px}
 .ap-main{
   position:absolute;left:0;top:0;
   width:68%;height:440px;border-radius:20px;overflow:hidden;
   box-shadow:var(--shadow-lg);border:3px solid #fff;
 }
-.ap-main img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:brightness(1.03) saturate(1.05)}
+.ap-main img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;filter:brightness(1.03) saturate(1.05)}
 .ap-over{
   position:absolute;right:0;bottom:0;
   width:55%;height:300px;border-radius:16px;overflow:hidden;
@@ -350,18 +344,23 @@ footer{background:#231B18;border-top:1px solid rgba(251,252,248,.07);padding:1.8
 
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-eyebrow">Regulatory Affairs &amp; Quality Assurance</p>
-  <h1 class="hero-name">Yash Gandhi</h1>
-  <p class="hero-tagline">MS Regulatory Affairs · Northeastern University<br/>MedTech · Pharma · Biologics</p>
-  <p class="hero-sub">FDA · EU MDR · ISO 13485 · 21 CFR 820 · cGMP · Veeva Vault</p>
-  <div class="hero-btns">
-    <a href="#contact" class="btn-dark">Get in Touch</a>
-    <a href="#experience" class="btn-light">View Experience</a>
-  </div>
-  <!-- THREE PHOTOS IN A ROW -->
-  <div class="hero-photos" id="heroPhotos">
-    <div class="hp-main">
-      <img src="photo1.jpg" alt="Yash Gandhi" onerror="this.parentNode.style.background='#e8e4df'"/>
+  <div class="hero-inner-split">
+    <!-- LEFT: PHOTO -->
+    <div class="hero-photo-wrap">
+      <div class="hp-main">
+        <img src="photo1.jpg" alt="Yash Gandhi" onerror="this.parentNode.style.background='#e8e4df'"/>
+      </div>
+    </div>
+    <!-- RIGHT: TEXT -->
+    <div>
+      <p class="hero-eyebrow">Regulatory Affairs &amp; Quality Assurance</p>
+      <h1 class="hero-name">Yash Gandhi</h1>
+      <p class="hero-tagline">MS Regulatory Affairs · Northeastern University<br/>MedTech · Pharma · Biologics</p>
+      <p class="hero-sub">FDA · EU MDR · ISO 13485 · 21 CFR 820 · cGMP · Veeva Vault</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-dark">Get in Touch</a>
+        <a href="#experience" class="btn-light">View Experience</a>
+      </div>
     </div>
   </div>
 </section>
@@ -372,7 +371,10 @@ footer{background:#231B18;border-top:1px solid rgba(251,252,248,.07);padding:1.8
     <div class="about-grid">
       <div class="about-photos reveal-left">
         <div class="ap-main">
-          <img src="photo3.jpg" alt="Yash Gandhi at Northeastern" onerror="this.parentNode.style.background='#e8e4df'"/>
+          <img src="photo2.jpg" alt="Yash Gandhi Northeastern wide" onerror="this.parentNode.style.background='#ddd'"/>
+        </div>
+        <div class="ap-over">
+          <img src="photo4.jpg" alt="Yash Gandhi Graduation" onerror="this.parentNode.style.background='#ddd'"/>
         </div>
       </div>
       <div class="about-text reveal-right">
@@ -385,7 +387,7 @@ footer{background:#231B18;border-top:1px solid rgba(251,252,248,.07);padding:1.8
         <div class="about-pills">
           <span class="apill dark">Open to Opportunities</span>
           <span class="apill dark">F-1 OPT / STEM</span>
-          <span class="apill">Washington DC-Baltimore Area</span>
+          <span class="apill">Clarksburg, MD</span>
           <span class="apill">RAPS Member 2025</span>
           <span class="apill">MS Reg. Affairs · NEU</span>
         </div>
