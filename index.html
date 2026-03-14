@@ -71,19 +71,24 @@ nav.scrolled{box-shadow:0 4px 30px rgba(35,27,24,.35)}
 .stat-n{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:800;color:#FBFCF8;line-height:1}
 .stat-l{font-size:.72rem;color:#FBFCF8;margin-top:.4rem;font-weight:500;letter-spacing:.05em}
 
-/* EXPERIENCE */
+/* EXPERIENCE — two-layer card layout */
 #experience{background:var(--bg)}
-.exp-list{display:flex;flex-direction:column;gap:0}
-.exp-row{display:grid;grid-template-columns:180px 1fr;gap:3rem;padding:2.5rem 0;border-top:1px solid var(--border);transition:background .3s,padding .3s,border-radius .3s,margin .3s}
-.exp-row:hover{background:rgba(35,27,24,.03);padding-left:1rem;padding-right:1rem;border-radius:14px;margin:0 -1rem}
-.exp-left{padding-top:.1rem}
-.exp-tag{font-size:.7rem;font-weight:700;color:#FBFCF8;background:#231B18;border-radius:50px;padding:.22rem .75rem;display:inline-block;margin-bottom:.5rem;white-space:nowrap}
-.exp-co{font-size:.76rem;color:var(--soft);line-height:1.5}
-.exp-role{font-size:1rem;font-weight:700;color:#231B18;margin-bottom:.25rem;letter-spacing:-.01em}
-.exp-place{font-size:.78rem;color:var(--soft);margin-bottom:.8rem}
-.exp-ul{list-style:none;padding:0}
-.exp-ul li{font-size:.85rem;color:var(--muted);line-height:1.78;padding-left:1.1rem;position:relative;margin-bottom:.3rem}
-.exp-ul li::before{content:'';position:absolute;left:0;top:.68em;width:5px;height:5px;border-radius:50%;background:#231B18}
+.exp-list{display:flex;flex-direction:column}
+.exp-card{padding:2.2rem 0;border-top:1px solid var(--border);transition:background .3s,padding .3s,border-radius .3s,margin .3s}
+.exp-card:hover{background:rgba(35,27,24,.025);padding-left:1.4rem;padding-right:1.4rem;border-radius:16px;margin:0 -1.4rem}
+.exp-company-row{display:flex;align-items:center;gap:.55rem;margin-bottom:.9rem}
+.exp-logo{width:20px;height:20px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.exp-logo img{width:20px;height:20px;object-fit:contain;filter:grayscale(100%) brightness(0) opacity(.5)}
+.exp-company-name{font-size:.78rem;font-weight:600;color:var(--soft);letter-spacing:.01em}
+.exp-company-sep{font-size:.7rem;color:var(--border)}
+.exp-company-loc{font-size:.75rem;color:var(--soft);font-weight:400;opacity:.75}
+.exp-role-row{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.5rem;margin-bottom:.35rem}
+.exp-role{font-size:1.05rem;font-weight:700;color:#231B18;letter-spacing:-.01em;line-height:1.3}
+.exp-date{font-size:.72rem;font-weight:600;color:var(--soft);white-space:nowrap;letter-spacing:.02em}
+.exp-place{font-size:.78rem;color:var(--soft);font-weight:400;margin-bottom:1rem;letter-spacing:.01em}
+.exp-ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.exp-ul li{font-size:.85rem;color:var(--muted);line-height:1.78;padding-left:1.1rem;position:relative}
+.exp-ul li::before{content:'';position:absolute;left:0;top:.72em;width:4px;height:4px;border-radius:50%;background:var(--soft)}
 
 /* SKILLS */
 #skills{background:var(--bg2)}
@@ -94,8 +99,6 @@ nav.scrolled{box-shadow:0 4px 30px rgba(35,27,24,.35)}
 .skill-tags{display:flex;flex-wrap:wrap;gap:.4rem}
 .skill-tag{padding:.28rem .8rem;border-radius:50px;font-size:.73rem;font-weight:600;background:rgba(35,27,24,.06);border:1px solid rgba(35,27,24,.12);color:#231B18;transition:background .22s,color .22s,transform .22s,box-shadow .22s;cursor:default}
 .skill-tag:hover{background:#231B18;color:#FBFCF8;transform:translateY(-2px) scale(1.04);box-shadow:0 4px 12px rgba(35,27,24,.18)}
-.skill-tag.warm{background:#231B18;border-color:#231B18;color:#FBFCF8}
-.skill-tag.warm:hover{background:#3d302b;transform:translateY(-2px) scale(1.04)}
 
 /* PROJECTS */
 #projects{background:var(--bg)}
@@ -110,20 +113,9 @@ nav.scrolled{box-shadow:0 4px 30px rgba(35,27,24,.35)}
 .proj-date{font-size:.7rem;color:var(--soft);margin-top:.9rem;font-weight:500}
 
 /* PROJECT MODAL */
-.modal-overlay{
-  position:fixed;inset:0;background:rgba(35,27,24,.55);z-index:500;
-  display:flex;align-items:center;justify-content:center;padding:2rem;
-  opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(.16,1,.3,1);
-  backdrop-filter:blur(6px);
-}
+.modal-overlay{position:fixed;inset:0;background:rgba(35,27,24,.55);z-index:500;display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(.16,1,.3,1);backdrop-filter:blur(6px)}
 .modal-overlay.open{opacity:1;pointer-events:all}
-.modal{
-  background:var(--bg);border-radius:24px;max-width:720px;width:100%;
-  max-height:88vh;overflow-y:auto;
-  box-shadow:0 32px 80px rgba(35,27,24,.22);
-  transform:translateY(30px) scale(.97);transition:transform .35s cubic-bezier(.16,1,.3,1);
-  position:relative;
-}
+.modal{background:var(--bg);border-radius:24px;max-width:720px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 32px 80px rgba(35,27,24,.22);transform:translateY(30px) scale(.97);transition:transform .35s cubic-bezier(.16,1,.3,1);position:relative}
 .modal-overlay.open .modal{transform:translateY(0) scale(1)}
 .modal-header{padding:2.5rem 2.5rem 0}
 .modal-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:.6rem}
@@ -136,13 +128,7 @@ nav.scrolled{box-shadow:0 4px 30px rgba(35,27,24,.35)}
 .modal-section p{font-size:.88rem;color:var(--muted);line-height:1.85;font-weight:300}
 .modal-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
 .modal-tag{font-size:.72rem;font-weight:600;padding:.25rem .8rem;border-radius:50px;background:rgba(35,27,24,.06);border:1px solid rgba(35,27,24,.12);color:#231B18}
-.modal-close{
-  position:absolute;top:1.2rem;right:1.2rem;
-  width:36px;height:36px;border-radius:50%;
-  background:rgba(35,27,24,.08);border:none;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;color:#231B18;transition:.2s;font-family:'Inter',sans-serif;
-}
+.modal-close{position:absolute;top:1.2rem;right:1.2rem;width:36px;height:36px;border-radius:50%;background:rgba(35,27,24,.08);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#231B18;transition:.2s;font-family:'Inter',sans-serif}
 .modal-close:hover{background:#231B18;color:#FBFCF8}
 .modal::-webkit-scrollbar{width:4px}
 .modal::-webkit-scrollbar-thumb{background:rgba(35,27,24,.15);border-radius:2px}
@@ -174,10 +160,6 @@ footer{background:#231B18;border-top:1px solid rgba(251,252,248,.07);padding:1.8
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
-.reveal-left.visible{opacity:1;transform:translateX(0)}
-.reveal-right{opacity:0;transform:translateX(50px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
-.reveal-right.visible{opacity:1;transform:translateX(0)}
 .word-wrap .word{display:inline-block;opacity:0;transform:translateY(28px) rotate(.4deg);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
 .word-wrap.visible .word{opacity:1;transform:translateY(0) rotate(0deg)}
 
@@ -189,15 +171,15 @@ footer{background:#231B18;border-top:1px solid rgba(251,252,248,.07);padding:1.8
   .hp-main{height:420px}
   .stats-inner{grid-template-columns:repeat(2,1fr)}
   .proj-grid{grid-template-columns:1fr 1fr}
-  .edu-grid{grid-template-columns:1fr}
   nav{padding:0 1.5rem}
   .s-inner{padding:5rem 1.5rem}
+  .exp-role-row{flex-direction:column;gap:.2rem}
+  .exp-date{align-self:flex-start}
 }
 @media(max-width:640px){
   .nav-links{display:none;flex-direction:column;position:fixed;top:54px;left:0;right:0;background:#231B18;padding:2rem;gap:1.5rem;border-bottom:1px solid rgba(251,252,248,.08)}
   .nav-links.open{display:flex}
   .nav-toggle{display:flex}
-  .exp-row{grid-template-columns:1fr}
   .proj-grid{grid-template-columns:1fr}
   .skills-grid{grid-template-columns:1fr}
   .modal{border-radius:16px}
@@ -291,83 +273,119 @@ footer{background:#231B18;border-top:1px solid rgba(251,252,248,.07);padding:1.8
     <h2 class="big-title reveal">Professional <span>Experience</span></h2>
     <div class="s-divider reveal"></div>
     <div class="exp-list">
-      <div class="exp-row reveal">
-        <div class="exp-left">
-          <div class="exp-tag">Dec 2025 – Now</div>
-          <div class="exp-co">Project Insulin<br/>Cambridge, MA</div>
+
+      <!-- Project Insulin -->
+      <div class="exp-card reveal">
+        <div class="exp-company-row">
+          <div class="exp-logo">
+            <img src="logo-pi.jpg" alt="Project Insulin" onerror="this.style.display='none'"/>
+          </div>
+          <span class="exp-company-name">Project Insulin</span>
+          <span class="exp-company-sep">·</span>
+          <span class="exp-company-loc">Cambridge, MA</span>
         </div>
-        <div>
-          <div class="exp-role">Regulatory Affairs Project Analyst (Volunteer)</div>
-          <div class="exp-place">Biosimilars · Pre-IND Regulatory Support</div>
-          <ul class="exp-ul">
-            <li>Leading early-stage regulatory planning for a biosimilar insulin initiative, independently developing CMC documentation frameworks, basic quality system structure, and traceability controls.</li>
-            <li>Executing comprehensive gap analysis between reference product data and preliminary process controls to align project documentation with FDA 21 CFR 210/211 guidelines.</li>
-            <li>Authoring foundational QA documents, stability outlines, analytical-method templates, and change-control forms in collaboration with an external regulatory consultant to establish cGMP compliance groundwork.</li>
-          </ul>
+        <div class="exp-role-row">
+          <div class="exp-role">Regulatory Affairs Project Analyst <span style="font-weight:400;font-size:.82rem;color:var(--soft)">(Volunteer)</span></div>
+          <div class="exp-date">Dec 2025 – Present</div>
         </div>
+        <div class="exp-place">Biosimilars · Pre-IND Regulatory Support</div>
+        <ul class="exp-ul">
+          <li>Leading early-stage regulatory planning for a biosimilar insulin initiative, independently developing CMC documentation frameworks, basic quality system structure, and traceability controls.</li>
+          <li>Executing comprehensive gap analysis between reference product data and preliminary process controls to align project documentation with FDA 21 CFR 210/211 guidelines.</li>
+          <li>Authoring foundational QA documents, stability outlines, analytical-method templates, and change-control forms in collaboration with an external regulatory consultant to establish cGMP compliance groundwork.</li>
+        </ul>
       </div>
-      <div class="exp-row reveal">
-        <div class="exp-left">
-          <div class="exp-tag">Jan – Jun 2025</div>
-          <div class="exp-co">Becton, Dickinson<br/>&amp; Company<br/>San Diego, CA</div>
+
+      <!-- BD -->
+      <div class="exp-card reveal">
+        <div class="exp-company-row">
+          <div class="exp-logo">
+            <img src="logo-bd.svg" alt="Becton Dickinson" onerror="this.style.display='none'"/>
+          </div>
+          <span class="exp-company-name">Becton, Dickinson and Company</span>
+          <span class="exp-company-sep">·</span>
+          <span class="exp-company-loc">San Diego, CA</span>
         </div>
-        <div>
+        <div class="exp-role-row">
           <div class="exp-role">Regulatory Affairs Specialist II</div>
-          <div class="exp-place">Medical Device · Class II · FDA &amp; EU MDR</div>
-          <ul class="exp-ul">
-            <li>Planned and executed regulatory documentation for FDA 510(k) and EU MDR Class II device submissions, ensuring compliance with applicable QSR and ISO standards.</li>
-            <li>Standardized FDA and EU MDR submission content by applying regulatory frameworks and translating technical data into reviewer-friendly documentation for Q-Sub and technical files.</li>
-            <li>Led migration of global Regulatory Affairs and Quality repositories from Confluence Server to Confluence Cloud, restructuring submission documentation into standardized, inspection-ready frameworks aligned with FDA QSR and ISO 13485.</li>
-            <li>Designed structured metadata taxonomy,document lifecycle controls,and versioning logic to ensure traceability across 510(k),EU MDR Technical Files,and post-market activities,strengthening regulatory data integrity.</li>
-            <li>Established controlled document routing workflows and authored SOPs governing document control, submission archiving, and repository governance to maintain inspection readiness.</li>
-            <li>Partnered with global Regulatory Affairs teams to map legacy submission records into cloud-based RIM-aligned architecture, resolving documentation gaps and improving document retrieval efficiency by ~30%, reducing submission preparation time.</li>
-          </ul>
+          <div class="exp-date">Jan – Jun 2025</div>
         </div>
+        <div class="exp-place">Medical Device · Class II · FDA &amp; EU MDR</div>
+        <ul class="exp-ul">
+          <li>Planned and executed regulatory documentation for FDA 510(k) and EU MDR Class II device submissions, ensuring compliance with applicable QSR and ISO standards.</li>
+          <li>Standardized FDA and EU MDR submission content by applying regulatory frameworks and translating technical data into reviewer-friendly documentation for Q-Sub and technical files.</li>
+          <li>Led migration of global Regulatory Affairs and Quality repositories from Confluence Server to Confluence Cloud, restructuring submission documentation into standardized, inspection-ready frameworks aligned with FDA QSR and ISO 13485.</li>
+          <li>Designed structured metadata taxonomy, document lifecycle controls, and versioning logic to ensure traceability across 510(k), EU MDR Technical Files, and post-market activities, strengthening regulatory data integrity.</li>
+          <li>Established controlled document routing workflows and authored SOPs governing document control, submission archiving, and repository governance to maintain inspection readiness.</li>
+          <li>Partnered with global Regulatory Affairs teams to map legacy submission records into cloud-based RIM-aligned architecture, resolving documentation gaps and improving document retrieval efficiency by ~30%.</li>
+        </ul>
       </div>
-      <div class="exp-row reveal">
-        <div class="exp-left">
-          <div class="exp-tag">Oct – Dec 2024</div>
-          <div class="exp-co">RegDesk Inc.<br/>Boston, MA</div>
+
+      <!-- RegDesk -->
+      <div class="exp-card reveal">
+        <div class="exp-company-row">
+          <div class="exp-logo">
+            <img src="logo-rd.png" alt="RegDesk" onerror="this.style.display='none'"/>
+          </div>
+          <span class="exp-company-name">RegDesk Inc.</span>
+          <span class="exp-company-sep">·</span>
+          <span class="exp-company-loc">Boston, MA</span>
         </div>
-        <div>
+        <div class="exp-role-row">
           <div class="exp-role">Regulatory Affairs Intern</div>
-          <div class="exp-place">EU MDR · Cybersecurity Compliance</div>
-          <ul class="exp-ul">
-            <li>Conducted regulatory intelligence on EU MDR Annex I and MDCG 2019-16, developing cybersecurity compliance briefs for CE Mark submissions.</li>
-            <li>Monitored MDR updates and maintained an internal compliance tracker to streamline documentation planning.</li>
-          </ul>
+          <div class="exp-date">Oct – Dec 2024</div>
         </div>
+        <div class="exp-place">EU MDR · Cybersecurity Compliance</div>
+        <ul class="exp-ul">
+          <li>Conducted regulatory intelligence on EU MDR Annex I and MDCG 2019-16, developing cybersecurity compliance briefs for CE Mark submissions across multiple EU regions.</li>
+          <li>Monitored MDR updates and maintained an internal compliance tracker to streamline documentation planning and improve submission readiness.</li>
+        </ul>
       </div>
-      <div class="exp-row reveal">
-        <div class="exp-left">
-          <div class="exp-tag">Feb – Aug 2023</div>
-          <div class="exp-co">Alembic Pharma<br/>Vadodara, India</div>
+
+      <!-- Alembic -->
+      <div class="exp-card reveal">
+        <div class="exp-company-row">
+          <div class="exp-logo">
+            <img src="logo-alembic.png" alt="Alembic Pharmaceuticals" onerror="this.style.display='none'"/>
+          </div>
+          <span class="exp-company-name">Alembic Pharmaceuticals Ltd.</span>
+          <span class="exp-company-sep">·</span>
+          <span class="exp-company-loc">Vadodara, India</span>
         </div>
-        <div>
+        <div class="exp-role-row">
           <div class="exp-role">Supply Chain Management Analyst (PPC)</div>
-          <div class="exp-place">Sterile Injectables · cGMP · ANDA</div>
-          <ul class="exp-ul">
-            <li>Collaborated with Regulatory Affairs (CMC), QA/QC, and Manufacturing teams to support ANDA Module 3 documentation, batch readiness, and post-approval change control activities.</li>
-            <li>Performed compliance reviews of batch records, deviations, and labeling documentation in alignment with FDA 21 CFR 210/211 and cGMP requirements.</li>
-            <li>Utilized SAP Production Planning to track GMP manufacturing status, validation data, and batch disposition timelines, reducing audit preparation time by ~15%.</li>
-            <li>Maintained daily tracking reports to ensure audit readiness, data integrity, and regulatory lifecycle visibility.</li>
-          </ul>
+          <div class="exp-date">Feb – Aug 2023</div>
         </div>
+        <div class="exp-place">Sterile Injectables · cGMP · ANDA</div>
+        <ul class="exp-ul">
+          <li>Collaborated with Regulatory Affairs (CMC), QA/QC, and Manufacturing teams to support ANDA Module 3 documentation, batch readiness, and post-approval change control activities.</li>
+          <li>Performed compliance reviews of batch records, deviations, and labeling documentation in alignment with FDA 21 CFR 210/211 and cGMP requirements.</li>
+          <li>Utilized SAP Production Planning to track GMP manufacturing status, validation data, and batch disposition timelines, reducing audit preparation time by ~15%.</li>
+          <li>Maintained daily tracking reports to ensure audit readiness, data integrity, and regulatory lifecycle visibility.</li>
+        </ul>
       </div>
-      <div class="exp-row reveal">
-        <div class="exp-left">
-          <div class="exp-tag">May – Jul 2021</div>
-          <div class="exp-co">Suyaash Pharma<br/>Bilimora, India</div>
+
+      <!-- Suyaash -->
+      <div class="exp-card reveal">
+        <div class="exp-company-row">
+          <div class="exp-logo">
+            <img src="logo-Suyaash.png" alt="Suyaash Pharmaceuticals" onerror="this.style.display='none'"/>
+          </div>
+          <span class="exp-company-name">Suyaash Pharmaceuticals</span>
+          <span class="exp-company-sep">·</span>
+          <span class="exp-company-loc">Bilimora, India</span>
         </div>
-        <div>
+        <div class="exp-role-row">
           <div class="exp-role">QA Analyst Intern</div>
-          <div class="exp-place">Ophthalmic Manufacturing · GMP · GDP</div>
-          <ul class="exp-ul">
-            <li>Reviewed GMP batch records for ophthalmic formulations to ensure audit readiness and GDP compliance.</li>
-            <li>Assisted in drafting and updating SOPs, coordinating documentation flow between production and quality teams.</li>
-          </ul>
+          <div class="exp-date">May – Jul 2021</div>
         </div>
+        <div class="exp-place">Ophthalmic Manufacturing · GMP · GDP</div>
+        <ul class="exp-ul">
+          <li>Reviewed GMP batch records for ophthalmic formulations to ensure audit readiness and GDP compliance.</li>
+          <li>Assisted in drafting and updating SOPs, coordinating documentation flow between production and quality teams.</li>
+        </ul>
       </div>
+
     </div>
   </div>
 </section>
@@ -429,49 +447,42 @@ footer{background:#231B18;border-top:1px solid rgba(251,252,248,.07);padding:1.8
     <h2 class="big-title reveal">Key <span>Projects</span></h2>
     <div class="s-divider reveal"></div>
     <div class="proj-grid">
-
       <div class="proj-card reveal" style="transition-delay:.0s" onclick="openModal('p1')">
         <div class="proj-n">Project 01</div>
         <div class="proj-t">FDA 510(k) Summary &amp; Q-Submission Strategy</div>
         <div class="proj-d">VascuCage™ IVC Filter — Class II vascular device 510(k) documentation, predicate analysis, and FDA pre-submission strategy.</div>
         <div class="proj-date">Apr – Jun 2025</div>
       </div>
-
       <div class="proj-card reveal" style="transition-delay:.1s" onclick="openModal('p2')">
         <div class="proj-n">Project 02</div>
         <div class="proj-t">Global Regulatory Strategy — AlignCraft TeethAligners</div>
         <div class="proj-d">Multi-market regulatory strategy for a Class II clear aligner device across the US, EU, UK, Japan, Australia, and Brazil.</div>
         <div class="proj-date">Sep – Dec 2024</div>
       </div>
-
       <div class="proj-card reveal" style="transition-delay:.2s" onclick="openModal('p3')">
         <div class="proj-n">Project 03</div>
         <div class="proj-t">Health Canada Class III Strategy — VascuCage™ IVC Filter</div>
         <div class="proj-d">Designed regulatory strategy for the VascuCage™ IVC filter justifying Class III classification per CMDR, aligned with FDA and EU MDR rules.</div>
         <div class="proj-date">Apr – Jun 2025</div>
       </div>
-
       <div class="proj-card reveal" style="transition-delay:.0s" onclick="openModal('p4')">
         <div class="proj-n">Project 04</div>
         <div class="proj-t">FDA-Ready CMC Package — Sterile Injectable Product</div>
         <div class="proj-d">Developed a mock eCTD Module 3 CMC package including control strategy, analytical methods, and stability plans aligned with ICH Q8–Q12.</div>
         <div class="proj-date">Jan – Apr 2025</div>
       </div>
-
       <div class="proj-card reveal" style="transition-delay:.1s" onclick="openModal('p5')">
         <div class="proj-n">Project 05</div>
         <div class="proj-t">Quality Risk Management — FMEA Case Study</div>
         <div class="proj-d">Applied Failure Modes and Effects Analysis to evaluate risks in a medical device component manufacturing process, identifying mitigation strategies.</div>
         <div class="proj-date">2024</div>
       </div>
-
       <div class="proj-card reveal" style="transition-delay:.2s" onclick="openModal('p6')">
         <div class="proj-n">Project 06</div>
         <div class="proj-t">Quality System SOP Development — FDA QSR &amp; ISO 13485</div>
         <div class="proj-d">Developed three QSR/ISO 13485-compliant SOPs for CAPA, Document Control, and Handling &amp; Distribution for a hypothetical device launch.</div>
         <div class="proj-date">Jan – Mar 2025</div>
       </div>
-
     </div>
   </div>
 </section>
@@ -496,7 +507,7 @@ footer{background:#231B18;border-top:1px solid rgba(251,252,248,.07);padding:1.8
   </div>
 </div>
 
-<!-- EDUCATION — chronological order -->
+<!-- EDUCATION -->
 <section id="education">
   <div class="s-inner">
     <p class="eyebrow reveal">Academic Background</p>
@@ -556,68 +567,13 @@ footer{background:#231B18;border-top:1px solid rgba(251,252,248,.07);padding:1.8
 <footer>© 2025 Yash Gandhi · Regulatory Affairs &amp; Quality Assurance · Clarksburg, MD</footer>
 
 <script>
-// PROJECT DATA
 const projects={
-  p1:{
-    eyebrow:'Project 01',
-    title:'FDA 510(k) Summary & Q-Submission Strategy — VascuCage™ IVC Filter',
-    date:'Apr – Jun 2025',
-    overview:'This project involved developing U.S. FDA regulatory documentation for the VascuCage™ Inferior Vena Cava Filter, a Class II intravascular medical device intended to prevent recurrent pulmonary embolism. The work focused on preparing a comprehensive regulatory strategy aligned with FDA premarket notification requirements.',
-    approach:'The project began with evaluation of device classification and regulatory pathway under the FDA 510(k) framework. Predicate analysis was conducted using the Crux® Vena Cava Filter (K150262) to establish substantial equivalence. A full 510(k) Summary was drafted in accordance with 21 CFR 807.92 including device description, indications for use, technological characteristics, and performance testing considerations. The CDRH Refuse-to-Accept checklist and eSTAR submission template were applied to ensure submission completeness. A Q-Submission Pre-Sub meeting request was prepared to obtain FDA feedback on clinical study design, investigational device exemption considerations, and safety testing related to the novel polymer component PolyThread.',
-    insight:'Early engagement with the FDA through the Q-Submission program can significantly reduce regulatory uncertainty during device development. Obtaining FDA feedback on testing strategies, clinical study design, and investigational requirements before initiating formal studies helps sponsors align development plans with regulatory expectations and avoid costly delays during review.',
-    context:['FDA 510(k) Premarket Notification pathway','21 CFR 807.92 submission summary requirements','FDA CDRH Refuse-to-Accept checklist','eSTAR electronic submission format','21 CFR 812 Investigational Device Exemption requirements'],
-    skills:['Regulatory strategy development','Predicate device analysis','510(k) documentation preparation','FDA pre-submission planning','Medical device regulatory classification']
-  },
-  p2:{
-    eyebrow:'Project 02',
-    title:'Global Regulatory Strategy — AlignCraft TeethAligners',
-    date:'Sep – Dec 2024',
-    overview:'This capstone project involved developing a global regulatory and market entry strategy for AlignCraft TeethAligners, a Class II clear aligner orthodontic device. The project evaluated regulatory pathways and commercialization considerations across six international markets including the United States, European Union, United Kingdom, Japan, Australia, and Brazil.',
-    approach:'As project lead, responsibilities included coordinating regulatory research, aligning cross-functional deliverables, and developing the overall regulatory strategy. The U.S. pathway was evaluated through the FDA 510(k) process with predicate analysis referencing Invisalign and ClearCorrect devices under Product Code NXC. International regulatory strategies were developed based on regional frameworks including EU MDR, PMDA in Japan, TGA in Australia, and ANVISA in Brazil. Additional work included drafting biocompatibility assessment, risk evaluation, and adverse event reporting sections aligned with FDA 21 CFR Part 803. Regulatory budgeting and market entry cost projections were prepared using Excel.',
-    insight:'Developing a global regulatory strategy requires aligning product development with multiple regulatory frameworks simultaneously. Considering regional requirements early in development helps reduce redundant testing and supports efficient regulatory submissions across international markets.',
-    context:['FDA 510(k) Premarket Notification pathway','EU Medical Device Regulation (MDR)','PMDA regulatory framework in Japan','TGA medical device regulations in Australia','ANVISA medical device regulatory system in Brazil'],
-    skills:['Global regulatory strategy development','Regulatory classification analysis','International regulatory pathway evaluation','Cross-functional project leadership','Regulatory planning and market entry strategy']
-  },
-  p3:{
-    eyebrow:'Project 03',
-    title:'Health Canada Class III Regulatory Strategy — VascuCage™ IVC Filter',
-    date:'Apr – Jun 2025',
-    overview:'This project focused on designing a regulatory strategy for VascuCage™, a hypothetical inferior vena cava filter intended for prevention of pulmonary embolism. The objective was to determine appropriate classification and outline regulatory submission considerations for the Canadian market.',
-    approach:'The device classification was evaluated under the Canadian Medical Devices Regulations and justified as a Class III device based on its long-term implantation and vascular interaction. The strategy incorporated global regulatory considerations including comparison with FDA product code DTK and EU MDR classification rules. Relevant standards such as ISO 10993 for biocompatibility and ISO 25539 for cardiovascular implants were reviewed to define required testing and documentation.',
-    insight:'Medical device classification under Health Canada regulations plays a critical role in determining submission requirements and regulatory timelines. Devices classified as Class III require a Medical Device License supported by evidence of safety and effectiveness, making early regulatory planning essential for successful market authorization.',
-    context:['Health Canada Medical Devices Regulations','FDA regulatory product classification comparisons','EU MDR regulatory alignment','ISO 10993 and ISO 25539 standards'],
-    skills:['Global regulatory strategy development','Device classification analysis','Regulatory standards evaluation','International market access planning']
-  },
-  p4:{
-    eyebrow:'Project 04',
-    title:'FDA-Ready CMC Package Development — Sterile Injectable Product',
-    date:'Jan – Apr 2025',
-    overview:'This project involved development of a mock Chemistry, Manufacturing, and Controls package for a sterile injectable pharmaceutical product prepared according to eCTD Module 3 requirements. The objective was to design a structured CMC documentation framework that aligns with FDA expectations and international regulatory guidelines.',
-    approach:'The CMC package included drug substance and drug product characterization, control strategy development, analytical method descriptions, and stability study planning. Risk assessment principles were applied using FMEA to evaluate potential risks across manufacturing and quality processes. Data management practices were structured around ALCOA+ principles to ensure data integrity throughout documentation.',
-    insight:'Strong Chemistry, Manufacturing, and Controls documentation is fundamental to regulatory review of pharmaceutical products. Establishing a clear control strategy, validated analytical methods, and stability programs ensures consistent product quality and regulatory confidence throughout the product lifecycle.',
-    context:['ICH Q8 Pharmaceutical Development','ICH Q9 Quality Risk Management','ICH Q10 Pharmaceutical Quality System','ICH Q12 Lifecycle Management'],
-    skills:['CMC documentation development','Quality risk assessment','Regulatory guideline interpretation','Data integrity and compliance principles']
-  },
-  p5:{
-    eyebrow:'Project 05',
-    title:'Quality Risk Management Case Study — Failure Modes and Effects Analysis',
-    date:'2024',
-    overview:'This project focused on applying Failure Modes and Effects Analysis to evaluate potential risks associated with a medical device component and its manufacturing process. The objective was to identify possible failure scenarios, assess their impact on product performance and patient safety, and determine appropriate mitigation strategies.',
-    approach:'The analysis began by mapping key process steps and identifying potential failure modes that could occur during manufacturing, assembly, or device operation. Each failure mode was evaluated using severity, occurrence, and detectability criteria. Risk priority values were calculated to identify areas requiring immediate attention or additional controls. The assessment also considered potential process improvements, inspection controls, and design modifications to reduce overall risk.',
-    insight:'Applying structured risk management tools such as Failure Modes and Effects Analysis early in product development allows organizations to identify potential safety and performance risks before they impact manufacturing or clinical use. Early risk identification enables implementation of preventive controls and strengthens overall product reliability.',
-    context:['ISO 14971 medical device risk management principles','Quality system risk-based thinking','Failure Modes and Effects Analysis methodology','Quality risk management concepts aligned with industry best practices'],
-    skills:['Risk analysis and prioritization','Failure mode identification','Quality systems thinking','Regulatory compliance awareness']
-  },
-  p6:{
-    eyebrow:'Project 06',
-    title:'Quality System SOP Development — FDA QSR & ISO 13485',
-    date:'Jan – Mar 2025',
-    overview:'This project focused on developing standard operating procedures aligned with FDA Quality System Regulation and ISO 13485 quality management standards. The objective was to create foundational quality procedures that support regulatory compliance and operational consistency for a medical device organization.',
-    approach:'Three SOPs were developed covering Corrective and Preventive Actions, Document Control, and Handling and Distribution. Each procedure incorporated risk-based decision making and GMP principles. Process workflows, responsibilities, and documentation requirements were defined to support traceability and regulatory inspection readiness.',
-    insight:'Well-designed quality system procedures form the foundation of regulatory compliance in medical device organizations. SOPs aligned with FDA Quality System Regulation and ISO 13485 standards help ensure consistent implementation of quality processes and support inspection readiness.',
-    context:['FDA Quality System Regulation','ISO 13485 Quality Management Systems','Good Manufacturing Practice principles'],
-    skills:['SOP development and documentation','Quality system process design','Compliance framework alignment','Inspection readiness planning']
-  }
+  p1:{eyebrow:'Project 01',title:'FDA 510(k) Summary & Q-Submission Strategy — VascuCage™ IVC Filter',date:'Apr – Jun 2025',overview:'This project involved developing U.S. FDA regulatory documentation for the VascuCage™ Inferior Vena Cava Filter, a Class II intravascular medical device intended to prevent recurrent pulmonary embolism. The work focused on preparing a comprehensive regulatory strategy aligned with FDA premarket notification requirements.',approach:'The project began with evaluation of device classification and regulatory pathway under the FDA 510(k) framework. Predicate analysis was conducted using the Crux® Vena Cava Filter (K150262) to establish substantial equivalence. A full 510(k) Summary was drafted in accordance with 21 CFR 807.92 including device description, indications for use, technological characteristics, and performance testing considerations. The CDRH Refuse-to-Accept checklist and eSTAR submission template were applied to ensure submission completeness. A Q-Submission Pre-Sub meeting request was prepared to obtain FDA feedback on clinical study design, investigational device exemption considerations, and safety testing related to the novel polymer component PolyThread.',insight:'Early engagement with the FDA through the Q-Submission program can significantly reduce regulatory uncertainty during device development. Obtaining FDA feedback on testing strategies, clinical study design, and investigational requirements before initiating formal studies helps sponsors align development plans with regulatory expectations and avoid costly delays during review.',context:['FDA 510(k) Premarket Notification pathway','21 CFR 807.92 submission summary requirements','FDA CDRH Refuse-to-Accept checklist','eSTAR electronic submission format','21 CFR 812 Investigational Device Exemption requirements'],skills:['Regulatory strategy development','Predicate device analysis','510(k) documentation preparation','FDA pre-submission planning','Medical device regulatory classification']},
+  p2:{eyebrow:'Project 02',title:'Global Regulatory Strategy — AlignCraft TeethAligners',date:'Sep – Dec 2024',overview:'This capstone project involved developing a global regulatory and market entry strategy for AlignCraft TeethAligners, a Class II clear aligner orthodontic device. The project evaluated regulatory pathways and commercialization considerations across six international markets including the United States, European Union, United Kingdom, Japan, Australia, and Brazil.',approach:'As project lead, responsibilities included coordinating regulatory research, aligning cross-functional deliverables, and developing the overall regulatory strategy. The U.S. pathway was evaluated through the FDA 510(k) process with predicate analysis referencing Invisalign and ClearCorrect devices under Product Code NXC. International regulatory strategies were developed based on regional frameworks including EU MDR, PMDA in Japan, TGA in Australia, and ANVISA in Brazil. Additional work included drafting biocompatibility assessment, risk evaluation, and adverse event reporting sections aligned with FDA 21 CFR Part 803. Regulatory budgeting and market entry cost projections were prepared using Excel.',insight:'Developing a global regulatory strategy requires aligning product development with multiple regulatory frameworks simultaneously. Considering regional requirements early in development helps reduce redundant testing and supports efficient regulatory submissions across international markets.',context:['FDA 510(k) Premarket Notification pathway','EU Medical Device Regulation (MDR)','PMDA regulatory framework in Japan','TGA medical device regulations in Australia','ANVISA medical device regulatory system in Brazil'],skills:['Global regulatory strategy development','Regulatory classification analysis','International regulatory pathway evaluation','Cross-functional project leadership','Regulatory planning and market entry strategy']},
+  p3:{eyebrow:'Project 03',title:'Health Canada Class III Regulatory Strategy — VascuCage™ IVC Filter',date:'Apr – Jun 2025',overview:'This project focused on designing a regulatory strategy for VascuCage™, a hypothetical inferior vena cava filter intended for prevention of pulmonary embolism. The objective was to determine appropriate classification and outline regulatory submission considerations for the Canadian market.',approach:'The device classification was evaluated under the Canadian Medical Devices Regulations and justified as a Class III device based on its long-term implantation and vascular interaction. The strategy incorporated global regulatory considerations including comparison with FDA product code DTK and EU MDR classification rules. Relevant standards such as ISO 10993 for biocompatibility and ISO 25539 for cardiovascular implants were reviewed to define required testing and documentation.',insight:'Medical device classification under Health Canada regulations plays a critical role in determining submission requirements and regulatory timelines. Devices classified as Class III require a Medical Device License supported by evidence of safety and effectiveness, making early regulatory planning essential for successful market authorization.',context:['Health Canada Medical Devices Regulations','FDA regulatory product classification comparisons','EU MDR regulatory alignment','ISO 10993 and ISO 25539 standards'],skills:['Global regulatory strategy development','Device classification analysis','Regulatory standards evaluation','International market access planning']},
+  p4:{eyebrow:'Project 04',title:'FDA-Ready CMC Package Development — Sterile Injectable Product',date:'Jan – Apr 2025',overview:'This project involved development of a mock Chemistry, Manufacturing, and Controls package for a sterile injectable pharmaceutical product prepared according to eCTD Module 3 requirements. The objective was to design a structured CMC documentation framework that aligns with FDA expectations and international regulatory guidelines.',approach:'The CMC package included drug substance and drug product characterization, control strategy development, analytical method descriptions, and stability study planning. Risk assessment principles were applied using FMEA to evaluate potential risks across manufacturing and quality processes. Data management practices were structured around ALCOA+ principles to ensure data integrity throughout documentation.',insight:'Strong Chemistry, Manufacturing, and Controls documentation is fundamental to regulatory review of pharmaceutical products. Establishing a clear control strategy, validated analytical methods, and stability programs ensures consistent product quality and regulatory confidence throughout the product lifecycle.',context:['ICH Q8 Pharmaceutical Development','ICH Q9 Quality Risk Management','ICH Q10 Pharmaceutical Quality System','ICH Q12 Lifecycle Management'],skills:['CMC documentation development','Quality risk assessment','Regulatory guideline interpretation','Data integrity and compliance principles']},
+  p5:{eyebrow:'Project 05',title:'Quality Risk Management Case Study — Failure Modes and Effects Analysis',date:'2024',overview:'This project focused on applying Failure Modes and Effects Analysis to evaluate potential risks associated with a medical device component and its manufacturing process. The objective was to identify possible failure scenarios, assess their impact on product performance and patient safety, and determine appropriate mitigation strategies.',approach:'The analysis began by mapping key process steps and identifying potential failure modes that could occur during manufacturing, assembly, or device operation. Each failure mode was evaluated using severity, occurrence, and detectability criteria. Risk priority values were calculated to identify areas requiring immediate attention or additional controls. The assessment also considered potential process improvements, inspection controls, and design modifications to reduce overall risk.',insight:'Applying structured risk management tools such as Failure Modes and Effects Analysis early in product development allows organizations to identify potential safety and performance risks before they impact manufacturing or clinical use. Early risk identification enables implementation of preventive controls and strengthens overall product reliability.',context:['ISO 14971 medical device risk management principles','Quality system risk-based thinking','Failure Modes and Effects Analysis methodology','Quality risk management concepts aligned with industry best practices'],skills:['Risk analysis and prioritization','Failure mode identification','Quality systems thinking','Regulatory compliance awareness']},
+  p6:{eyebrow:'Project 06',title:'Quality System SOP Development — FDA QSR & ISO 13485',date:'Jan – Mar 2025',overview:'This project focused on developing standard operating procedures aligned with FDA Quality System Regulation and ISO 13485 quality management standards. The objective was to create foundational quality procedures that support regulatory compliance and operational consistency for a medical device organization.',approach:'Three SOPs were developed covering Corrective and Preventive Actions, Document Control, and Handling and Distribution. Each procedure incorporated risk-based decision making and GMP principles. Process workflows, responsibilities, and documentation requirements were defined to support traceability and regulatory inspection readiness.',insight:'Well-designed quality system procedures form the foundation of regulatory compliance in medical device organizations. SOPs aligned with FDA Quality System Regulation and ISO 13485 standards help ensure consistent implementation of quality processes and support inspection readiness.',context:['FDA Quality System Regulation','ISO 13485 Quality Management Systems','Good Manufacturing Practice principles'],skills:['SOP development and documentation','Quality system process design','Compliance framework alignment','Inspection readiness planning']}
 };
 
 function openModal(id){
@@ -634,21 +590,16 @@ function openModal(id){
   document.body.style.overflow='hidden';
   document.getElementById('modalBox').scrollTop=0;
 }
-function closeModal(){
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow='';
-}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
 function closeModalOnBg(e){if(e.target===document.getElementById('modalOverlay'))closeModal()}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
-// NAV
 const nav=document.getElementById('mainNav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)},{passive:true});
 const nt=document.getElementById('navToggle'),nl=document.getElementById('navLinks');
 nt.addEventListener('click',()=>nl.classList.toggle('open'));
 nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
 
-// WORD-BY-WORD
 function initWordAnimations(){
   document.querySelectorAll('.big-title,.hero-name,.contact-hl').forEach(el=>{
     if(el.dataset.wordDone)return;
@@ -667,7 +618,6 @@ function initWordAnimations(){
 }
 initWordAnimations();
 
-// COUNT-UP
 function countUp(el,target,suffix,dur){
   let start=null;
   (function step(ts){
@@ -678,7 +628,6 @@ function countUp(el,target,suffix,dur){
   })(performance.now());
 }
 
-// SCROLL REVEAL
 const io=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(!e.isIntersecting)return;
@@ -690,15 +639,13 @@ const io=new IntersectionObserver(entries=>{
       el.querySelectorAll('[data-count]').forEach(n=>countUp(n,+n.dataset.count,n.dataset.suffix||'',1400));
     io.unobserve(el);
   });
-},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.word-wrap').forEach(el=>io.observe(el));
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.word-wrap').forEach(el=>io.observe(el));
 document.querySelectorAll('.stats-inner').forEach(el=>{el.classList.add('stat-wrapper');io.observe(el)});
 
-// PARALLAX
 const hw=document.querySelector('.hero-photo-wrap');
 window.addEventListener('scroll',()=>{if(hw)hw.style.transform=`translateY(${window.scrollY*.08}px)`},{passive:true});
 
-// MAGNETIC BUTTONS
 document.querySelectorAll('.btn-dark,.btn-light,.btn-resume').forEach(btn=>{
   btn.addEventListener('mousemove',e=>{
     const r=btn.getBoundingClientRect();
